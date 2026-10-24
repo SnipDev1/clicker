@@ -24,7 +24,8 @@ public class ShopController : Singleton<ShopController>
     {
         ClickerController.Instance.money -= 10;
         int.TryParse(SavingSystem.Instance.getUpgrade(SaveNames.upgrade1), out int result);
-        SavingSystem.Instance.setUpgrade(SaveNames.upgrade1, result + 1);
+        result += 1;
+        SavingSystem.Instance.SaveString(SaveNames.upgrade1, result.ToString());
         UpgradesController.Instance.UpdateUpgrades();
         
     }

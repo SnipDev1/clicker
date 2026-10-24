@@ -1,16 +1,14 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SavingSystem : Singleton<SavingSystem>
 {
-    private string saveMoneyKey = "Balance";
 
     public UInt64 getMoney()
     {
-        if (PlayerPrefs.HasKey(saveMoneyKey))
+        if (PlayerPrefs.HasKey(SaveNames.balance))
         {
-            string savedString = PlayerPrefs.GetString(saveMoneyKey);
+            string savedString = PlayerPrefs.GetString(SaveNames.balance);
             
             // Безопасно парсим строку обратно в ulong
             if (ulong.TryParse(savedString, out ulong result))
@@ -36,15 +34,14 @@ public class SavingSystem : Singleton<SavingSystem>
 
     public void setMoney(UInt64 money)
     {
-        PlayerPrefs.SetString(saveMoneyKey, money.ToString());
+        PlayerPrefs.SetString(SaveNames.balance, money.ToString());
         PlayerPrefs.Save();
         Debug.Log(money.ToString());
     }
 
-    public void setUpgrade(string upgradeName, int coef)
+    public void SaveString(string stringName, string value)
     {
-        PlayerPrefs.SetString(upgradeName, coef.ToString());
+        PlayerPrefs.SetString(stringName, value);
         PlayerPrefs.Save();
-
     }
 }
