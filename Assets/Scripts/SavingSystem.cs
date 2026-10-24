@@ -32,13 +32,6 @@ public class SavingSystem : Singleton<SavingSystem>
         return "";
     }
 
-    public void setMoney(UInt64 money)
-    {
-        PlayerPrefs.SetString(SaveNames.balance, money.ToString());
-        PlayerPrefs.Save();
-        Debug.Log(money.ToString());
-    }
-
     public void SaveString(string stringName, string value)
     {
         PlayerPrefs.SetString(stringName, value);

@@ -22,7 +22,7 @@ public class ShopController : Singleton<ShopController>
     
     private void BuyUpgrade()
     {
-        ClickerController.Instance.money -= 10;
+        PlayerController.Instance.money -= 10;
         int.TryParse(SavingSystem.Instance.getUpgrade(SaveNames.upgrade1), out int result);
         result += 1;
         SavingSystem.Instance.SaveString(SaveNames.upgrade1, result.ToString());
