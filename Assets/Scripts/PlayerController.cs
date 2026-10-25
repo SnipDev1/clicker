@@ -12,10 +12,8 @@ public class PlayerController : Singleton<PlayerController>
         { 
             return _money; 
         }
-        set 
+        private set 
         { 
-            if (value < 0)
-                return;
             Debug.Log(value);
             _money = value;
             gameSceneController.setMoney(_money);
@@ -28,6 +26,21 @@ public class PlayerController : Singleton<PlayerController>
         gameSceneController = GameSceneController.Instance;
         money = SavingSystem.Instance.getMoney(); 
         gameSceneController.setMoney(money);
+    }
+    
+    public bool SpendMoney(UInt64 amount)
+    {
+        if (money - amount > money)
+        {
+            return false;
+        }
+        money -= amount;
+        return true;
+    }
+    public bool AddMoney(UInt64 amount)
+    {
+        money += amount;
+        return true;
     }
 
 }

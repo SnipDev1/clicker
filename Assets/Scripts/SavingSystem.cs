@@ -3,7 +3,16 @@ using UnityEngine;
 
 public class SavingSystem : Singleton<SavingSystem>
 {
-
+    void Awake()
+    {
+        //Reset();
+    }
+    public void Reset()
+    {
+        SaveString(SaveNames.upgrade1, "0");
+        SaveString(SaveNames.balance, "0");
+        SaveString(SaveNames.upgrade1Price, "0");
+    }
     public UInt64 getMoney()
     {
         if (PlayerPrefs.HasKey(SaveNames.balance))

@@ -13,6 +13,6 @@ public class ClickerController : Singleton<ClickerController>
     public void addMoney()
     {
         Debug.Log("Added");
-        playerController.money += UpgradesController.Instance.ProcessMoney(1);
+        playerController.AddMoney(UpgradesController.Instance.ProcessMoney(1));
     }
 }
