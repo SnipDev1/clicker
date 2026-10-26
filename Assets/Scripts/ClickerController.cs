@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class ClickerController : Singleton<ClickerController>
@@ -12,7 +11,13 @@ public class ClickerController : Singleton<ClickerController>
     }
     public void addMoney()
     {
-        Debug.Log("Added");
-        playerController.AddMoney(UpgradesController.Instance.ProcessMoney(1));
+        ulong amount = UpgradesController.Instance.ProcessMoney(1);
+
+        // бонус из ивента с монеткой
+        CoinEventController coinEvent = CoinEventController.Instance;
+        if (coinEvent != null && coinEvent.IsClickBonusActive)
+            amount *= 2;
+
+        playerController.AddMoney(amount);
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 
 public class UpgradesController : Singleton<UpgradesController>
@@ -13,7 +12,6 @@ public class UpgradesController : Singleton<UpgradesController>
     public void UpdateUpgrades()
     {
         ulong.TryParse(SavingSystem.Instance.getUpgrade(SaveNames.upgrade1), out ulong result);
-        Debug.Log(result);
         clickIncrease = result;
     }
 
